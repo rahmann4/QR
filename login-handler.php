@@ -19,10 +19,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $userid = $_SESSION['id'];
         $qrcheck = $database->query("SELECT * FROM qr.qrcode WHERE userid = ?", [$userid]);
         if (($qrcheck)) {
-            header('Location: qr-page.php');
+            header("Location: qr-page.php?userid=" . $_SESSION['id']);
             exit;
         } else {
-            header('Location: qr-generator.view.php');
+            header("Location: qr-generator.view.php?userid=" . $_SESSION['id']);
             exit;
         }
     } else {
