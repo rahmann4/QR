@@ -6,7 +6,7 @@
   box-sizing: border-box;
   font-family: 'Quicksand', sans-serif;
 }
-body 
+body
 {
   display: flex;
   justify-content: center;
@@ -14,7 +14,7 @@ body
   min-height: 100vh;
   background: #000;
 }
-section 
+section
 {
   position: absolute;
   width: 100vw;
@@ -26,40 +26,29 @@ section
   flex-wrap: wrap;
   overflow: hidden;
 }
-section::before 
+section::before
 {
   content: '';
   position: absolute;
   width: 100%;
   height: 100%;
-  animation: animate 5s linear infinite;
-}
-@keyframes animate 
-{
-  0%
-  {
-    transform: translateY(-100%);
-  }
-  100%
-  {
-    transform: translateY(100%);
-  }
+  background: whitesmoke;
 }
 
 section .signin
 {
   position: absolute;
   width: 400px;
-  background: #222;  
+  background: cornflowerblue;
   z-index: 1000;
   display: flex;
   justify-content: center;
   align-items: center;
   padding: 40px;
   border-radius: 4px;
-  box-shadow: 0 15px 35px rgba(0,0,0,9);
+  box-shadow: 0 5px 7px rgba(0, 0, 0, 0.45);
 }
-section .signin .content 
+section .signin .content
 {
   position: relative;
   width: 100%;
@@ -69,13 +58,13 @@ section .signin .content
   flex-direction: column;
   gap: 40px;
 }
-section .signin .content h2 
+section .signin .content h2
 {
   font-size: 2em;
-  color: #0f0;
+  color: whitesmoke;
   text-transform: uppercase;
 }
-section .signin .content .form 
+section .signin .content .form
 {
   width: 100%;
   display: flex;
@@ -87,26 +76,28 @@ section .signin .content .form .inputBox
   position: relative;
   width: 100%;
 }
-section .signin .content .form .inputBox input 
+section .signin .content .form .inputBox input
 {
   position: relative;
   width: 100%;
-  background: #333;
+  background: #ffffff;
   border: none;
   outline: none;
   padding: 25px 10px 7.5px;
   border-radius: 4px;
-  color: #fff;
+  color: #000000;
   font-weight: 500;
   font-size: 1em;
+
 }
-section .signin .content .form .inputBox i 
+
+section .signin .content .form .inputBox i
 {
   position: absolute;
   left: 0;
   padding: 15px 10px;
   font-style: normal;
-  color: #aaa;
+  color: #000000;
   transition: 0.5s;
   pointer-events: none;
 }
@@ -117,14 +108,14 @@ section .signin .content .form .inputBox i
   font-size: 0.8em;
   color: #fff;
 }
-.signin .content .form .links 
+.signin .content .form .links
 {
   position: relative;
   width: 100%;
   display: flex;
   justify-content: space-between;
 }
-.signin .content .form .links a 
+.signin .content .form .links a
 {
   color: #fff;
   text-decoration: none;
@@ -137,7 +128,7 @@ section .signin .content .form .inputBox i
 .signin .content .form .inputBox input[type="submit"]
 {
   padding: 10px;
-  background: #0f0;
+  background: white;
   color: #000;
   font-weight: 600;
   font-size: 1.35em;
@@ -150,7 +141,7 @@ input[type="submit"]:active
 }
 @media (max-width: 900px)
 {
-  section span 
+  section span
   {
     width: calc(10vw - 2px);
     height: calc(10vw - 2px);
@@ -158,9 +149,59 @@ input[type="submit"]:active
 }
 @media (max-width: 600px)
 {
-  section span 
+  section span
   {
     width: calc(20vw - 2px);
     height: calc(20vw - 2px);
   }
+}
+
+a.button {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #007bff; 
+  color: #fff;
+  text-decoration: none;
+  border-radius: 5px;
+  border: 1px solid transparent; 
+  transition: background-color 0.3s ease;
+}
+
+a.button:hover {
+  background-color: #0056b3;
+}
+
+.input.button {
+    background-color: #007bff;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    border: 1px solid transparent;
+    transition: background-color 0.3s ease;
+}
+
+input.button:hover {
+  background-color: #0056b3;
+}
+
+.success-message {
+  color: #28a745;
+  font-size: 1.2em; 
+  font-weight: bold; 
+  text-align: center; 
+  margin-top: 20px;
+  background-color: whitesmoke;
+  border-radius: 4px;
+  padding: 5px;
+}
+
+.error-message {
+  color: red;
+  font-size: 1.2em; 
+  font-weight: bold; 
+  text-align: center; 
+  margin-top: 20px;
+  background-color: whitesmoke;
+  border-radius: 4px;
+  padding: 5px;
 }

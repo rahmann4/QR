@@ -13,6 +13,22 @@ class Database {
     public function query($sql, $params = []) {
         $this->statement = $this->db->prepare($sql);
         $this->statement->execute($params);
-        return $this->statement->fetchAll(PDO::FETCH_ASSOC);
+        return $this->statement->fetch(PDO::FETCH_ASSOC);
     }
+
+    public function insert($sql, $params = []) {
+        $this->statement = $this->db->prepare($sql);
+        return $this->statement->execute($params);
+    }
+
+    public function update($sql, $params = []) {
+        $this->statement = $this->db->prepare($sql);
+        return $this->statement->execute($params);
+    }
+
+    /* public function verify($sql, $params = []) {
+        $this->statement = $this->db->prepare($sql);
+        $this->statement->execute($params);
+        return $this->statement->fetchColumn();
+    } */
 }

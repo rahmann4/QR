@@ -2,7 +2,6 @@
 
 session_start();
 
-
 if (isset($_GET["error"])):
     $error = $_GET["error"];
 endif;
@@ -18,17 +17,16 @@ endif;
 
 <head>
     <meta charset="UTF-8">
-    <title>Login</title>
+    <title>Register</title>
     <link rel="stylesheet" href="/styling/login.css">
 </head>
 
 <body>
-
     <section>
         <div class="signin">
             <div class="content">
-                <h2>Sign In</h2>
-                <form action="login-handler.php" method="POST" class="form">
+                <h2>Register</h2>
+                <form action="reg-handler.php" method="POST" class="form">
                     <div class="inputBox">
                         <input name="username" id="username" type="text" required> <i>Username</i>
                     </div>
@@ -38,14 +36,9 @@ endif;
                     </div>
 
                     <div class="inputBox">
-                        <input type="submit" value="Login">
+                        <input type="submit" value="Register">
                     </div>
 
-                    <?php if (isset($error)): ?>
-                        <div class="error-message">
-                            <?= $error; ?>
-                        </div>
-                    <?php endif; ?>
                     <?php if (isset($message)): ?>
                         <div class="success-message">
                             <?= $message; ?>
@@ -55,7 +48,7 @@ endif;
                 </form>
 
                 <div>
-                    <a class="button" href="register.php">Register</a>
+                    <a class="button" href="index.php">Login</a>
                 </div>
             </div>
         </div>
