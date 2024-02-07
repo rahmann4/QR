@@ -12,6 +12,7 @@ use Endroid\QrCode\Writer\SvgWriter;
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $qrbody = $_POST['qrbody'];
     $qrName = $_POST['qrName'];
+    
 
     if (empty($qrbody) || empty($qrName)) {
         $_SESSION['error'] = 'Both fields must be filled';
@@ -24,7 +25,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     
     $lastInsertId = $database->lastInsertId();
 
-    $redirectUrl = "scan.php?qrbody=$qrbody";
+    $redirectUrl = "scan.php?qrbody=$qrbody&lastInsertId=$lastInsertId";
 
     $qrCode = new QrCode($redirectUrl);
 
@@ -36,6 +37,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $filename = $path  . $lastInsertId . '.svg';
     file_put_contents($filename, $qrSvgString);
 
-    header("Location: qr-page.php?userid=" . $_SESSION['id']);
+    header("Location: qr-page.php?userid=" . $_SESSION['id'] . "?qrid=" . $lastInsertId);
     exit();
 }

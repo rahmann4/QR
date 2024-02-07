@@ -1,61 +1,120 @@
 @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Montserrat');
 
+/* General styles */
 body {
     font-family: 'Quicksand', sans-serif;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 100vh;
     margin: 0;
-    background-color: #f0f0f0;
+    background-color: #92C7CF !important;
 }
 
-.qr-header {
-    margin-bottom: 20px;
+.qr-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    padding: 20px;
 }
 
-.qr-code-container {
+.qr-item {
+    background-color: #AAD7D9;
+    padding: 10px;
+    border: 3px solid #E5E1DA;
     text-align: center;
 }
 
-.qr-code {
-    max-width: 100%;
-    height: auto;
-    border: 2px solid #333;
-    padding: 10px;
-    background-color: #fff;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+.qr-code-container {
+    margin-bottom: 10px;
+}
+
+h1 {
+    text-shadow: 1px 1px 1px #000000; 
+    color: whitesmoke !important;
+    font-family: 'Montserrat';
+    margin-bottom: 20px !important;
 }
 
 .button {
+    margin-top: 10px;
+    font-family: 'Quicksand';
+}
+
+.dropdown-menu {
+    min-width: 150px;
+    margin-top: 10px;
+}
+
+.create,
+.button,
+.delete,
+.a.button {
     display: inline-block;
-    padding: 12px 24px; 
-    margin-top: 20px;
-    background-color: green;
+    padding: 12px 24px;
+    margin-top: 10px;
     color: #fff;
     text-decoration: none;
     border-radius: 5px;
     border: 1px solid transparent;
     transition: background-color 0.3s ease;
+    width: 50%;
 }
 
-.button:hover {
-    background-color: darkgreen;
+.create,
+.a.button {
+    background-color: #40A2E3;
+    position: fixed;
+    bottom: 90px; 
+    right: 20px; 
+    z-index: 999; 
+    width: 200px;
+    text-align: center;
+    font-family: 'Quicksand';
+    font-weight: 700;
+
+
+}
+
+.create:hover {
+    background-color: #3487bf;
+}
+
+.button,
+.a.button {
+    background-color: #FBF9F1;
+    color:black;
+    font-weight: 700;
+}
+
+.button:hover,
+.a.button:hover {
+    background-color: #e0ddd5;
+}
+
+.delete {
+    background-color: #D4A190; 
+    color:#EEEEEE;
+    font-weight: 700;
+    font-family: 'Quicksand';
 }
 
 .a.button {
-    display: inline-block;
-    padding: 12px 24px; 
-    margin-top: 20px;
-    background-color: red;
-    color: #fff;
-    text-decoration: none;
-    border-radius: 5px;
-    border: 1px solid transparent;
-    transition: background-color 0.3s ease;
+    position: fixed;
+    bottom: 20px; 
+    right: 20px; 
+    z-index: 999; 
+    background-color: #d58a11; 
+    font-family: 'Quicksand';
+    font-weight: 700;
+        color:#EEEEEE;
+
+
+
 }
 
+.delete:hover {
+    background-color: #B07D6F;
+    
+
+}
 .a.button:hover {
-    background-color: darkred;
+    background-color: #9e6810;
 }

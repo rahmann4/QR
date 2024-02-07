@@ -21,7 +21,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 
     $database = new Database($config);
-    $insert = $database->update('UPDATE qr.qrcode SET qrname = :qrname, qrbody = :qrbody, scan = 0, scantime = NULL WHERE userid = :userid AND idqrcode = :idqrcode',
+    $insert = $database->update('UPDATE qr.qrcode SET qrname = :qrname, qrbody = :qrbody WHERE userid = :userid AND idqrcode = :idqrcode',
     ['qrname' => $qrname, 'qrbody' => $qrbody, 'userid' => $_SESSION['id'], 'idqrcode' => $idqrcode]);
 
     $redirectUrl = "scan.php?qrbody=$qrbody";

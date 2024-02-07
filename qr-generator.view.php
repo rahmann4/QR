@@ -29,6 +29,7 @@ endif;
         </div>
 
         <button type="submit">Generate</button>
+        <input type="hidden" name="idqrcode" value="123">
 
         <div>
             <a href="logout.php" class="a button">Logout</a>
