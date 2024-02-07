@@ -24,7 +24,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $insert = $database->update('UPDATE qr.qrcode SET qrname = :qrname, qrbody = :qrbody WHERE userid = :userid AND idqrcode = :idqrcode',
     ['qrname' => $qrname, 'qrbody' => $qrbody, 'userid' => $_SESSION['id'], 'idqrcode' => $idqrcode]);
 
-    $redirectUrl = "scan.php?qrbody=$qrbody";
+    $redirectUrl = "scan.php?qrbody=$qrbody&lastInsertId=$idqrcode";
 
     $qrCode = new QrCode($redirectUrl);
 

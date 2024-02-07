@@ -54,18 +54,25 @@ $qrCodes = $database->queryAll('SELECT * FROM qr.qrcode WHERE userid = :userid A
                                 Save as
                             </button>
                             <ul class="dropdown-menu">
-                                <form action="saveqr.php" method="POST">
-                                    <li><button class="dropdown-item" name="format" type="submit" value="png">PNG</button>
-                                    </li>
-                                    <li><button class="dropdown-item" name="format" type="submit" value="jpg">JPG</button>
-                                    </li>
-                                    <li><button class="dropdown-item" name="format" type="submit" value="svg">SVG</button>
-                                    </li>
-                                    <input type="hidden" value="<?= $qrCode['idqrcode'] ?>" name="idqrcode">
-                                    <input type="hidden" value="<?= $_SESSION['id'] ?>" name="userid">
-                                    <input type="hidden" value="<?= $qrCode['qrbody'] ?>" name="qrbody">
-                                </form>
+                                <li>
+                                    <form action="saveqr.php" method="post">
+                                        <input type="hidden" value="<?= $qrCode['idqrcode'] ?>" name="idqrcode">
+                                        <input type="hidden" value="<?= $_SESSION['id'] ?>" name="userid">
+                                        <input type="hidden" value="<?= $qrCode['qrbody'] ?>" name="qrbody">
+                                        <button class="dropdown-item" name="formatPNG" type="submit" value="png">PNG</button>
+                                    </form>
 
+                                </li>
+                                <li>
+                                    <form action="saveqr.php" method="post">
+                                        <input type="hidden" value="<?= $qrCode['idqrcode'] ?>" name="idqrcode">
+                                        <input type="hidden" value="<?= $_SESSION['id'] ?>" name="userid">
+                                        <input type="hidden" value="<?= $qrCode['qrbody'] ?>" name="qrbody">
+                                        <button class="dropdown-item" name="formatSVG" type="submit" value="svg">SVG</button>
+                                    </form>
+
+                                </li>
+                                
                             </ul>
                         </div>
 
