@@ -1,16 +1,29 @@
 <?php
 
-session_start();
+/* session_start(); */
 
 require 'config.php';
 require 'Database.php';
 
-function getQueryParam($name, $default = null)
+$database = new Database($config);
+
+$qrid = $_GET['qrid'];
+
+$qrCodes = $database->query('SELECT * FROM qr.qrcode WHERE idqrcode = :idqrcode', ['idqrcode' => $qrid]);
+$qrbody = $qrCodes['qrbody'];
+header('Location: ' . "https://" . $qrbody);
+
+
+$insert = $database->insert(
+    'INSERT INTO qr.scan (idqrcode, qrbody, scantime) VALUES (:idqrcode, :qrbody, NOW())',
+    ['idqrcode' => $qrid, 'qrbody' => $qrbody]
+);
+
+/* function getQueryParam($name, $default = null)
 {
     return isset($_GET[$name]) ? $_GET[$name] : $default;
 }
 
-$database = new Database($config);
 
 $qrbody = getQueryParam('qrbody');
 $idqrcode = getQueryParam('lastInsertId');
@@ -21,13 +34,10 @@ if ($qrbody !== null && $idqrcode !== null) {
     }
 
 
-    $insert = $database->insert(
-        'INSERT INTO qr.scan (idqrcode, qrbody, scantime) VALUES (:idqrcode, :qrbody, NOW())',
-        ['idqrcode' => $idqrcode, 'qrbody' => $qrbody]
-    );
+
 
     header("Location: $redirectlink");
     exit();
-}
+} */
 
-echo "Your QR code is not a link. Your QR code: $qrbody";
+/* echo "Your QR code is not a link. Your QR code: $qrbody"; */

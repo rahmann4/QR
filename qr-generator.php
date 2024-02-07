@@ -23,9 +23,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $database = new Database($config);
     $insert = $database->insert('INSERT INTO qr.qrcode (userid, qrname, qrbody) VALUES (:userid, :qrname, :qrbody)', [':userid' => $_SESSION['id'], ':qrname' => $qrName, ':qrbody' => $qrbody]);
     
-    $lastInsertId = $database->lastInsertId();
+    $qrid = $database->lastInsertId();
 
-    $redirectUrl = "scan.php?qrbody=$qrbody&lastInsertId=$lastInsertId";
+    $redirectUrl = "scan.php?qrid=$qrid";
 
     $qrCode = new QrCode($redirectUrl);
 
@@ -34,9 +34,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $qrSvgString = $writer->write($qrCode)->getString();
 
     $path = 'qrcodes/';
-    $filename = $path  . $lastInsertId . '.svg';
+    $filename = $path  . $qrid . '.svg';
     file_put_contents($filename, $qrSvgString);
 
-    header("Location: qr-page.php?userid=" . $_SESSION['id'] . "?qrid=" . $lastInsertId);
+    header("Location: qr-page.php?userid=" . $_SESSION['id'] . "?qrid=" . $qrid);
     exit();
 }

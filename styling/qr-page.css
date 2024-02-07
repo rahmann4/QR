@@ -3,16 +3,27 @@
 
 /* General styles */
 body {
+    min-height: 100vh;
+    display: flex;
+    place-content: center;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+    justify-items: center;
     font-family: 'Quicksand', sans-serif;
     margin: 0;
     background-color: #92C7CF !important;
+    width: 100%;
 }
 
 .qr-container {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    /* display: flex; */
     gap: 20px;
-    padding: 20px;
+    padding-top: 20px;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+    justify-items: center;
 }
 
 .qr-item {

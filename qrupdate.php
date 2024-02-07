@@ -26,16 +26,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     $redirectUrl = "scan.php?qrbody=$qrbody&lastInsertId=$idqrcode";
 
-    $qrCode = new QrCode($redirectUrl);
-
-    $writer = new SvgWriter();
-
-    $qrSvgString = $writer->write($qrCode)->getString();
-
-    $path = 'qrcodes/';
-    $filename = $path . $idqrcode . '.svg';
-    file_put_contents($filename, $qrSvgString);
-
     header("Location: qr-page.php?userid=" . $_SESSION['id']);
     exit();
 }
