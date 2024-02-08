@@ -5,7 +5,7 @@ require 'config.php';
 require 'Database.php';
 
 $database = new Database($config);
-$qrCodes = $database->queryAll('SELECT * FROM qr.qrcode WHERE userid = :userid AND deletetime IS NULL', ['userid' => $_SESSION['id']]);
+$qrCodes = $database->queryAll('SELECT * FROM qrcode WHERE userid = :userid AND deletetime IS NULL', ['userid' => $_SESSION['id']]);
 ?>
 
 <!DOCTYPE html>

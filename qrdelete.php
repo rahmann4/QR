@@ -10,7 +10,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     $database = new Database($config);
     $insert = $database->update(
-        'UPDATE qr.qrcode SET deletetime = NOW() WHERE idqrcode = :idqrcode',
+        'UPDATE qrcode SET deletetime = NOW() WHERE idqrcode = :idqrcode',
         ['idqrcode' => $idqrcode]
     );
 

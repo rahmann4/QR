@@ -21,7 +21,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 
     $database = new Database($config);
-    $insert = $database->insert('INSERT INTO qr.qrcode (userid, qrname, qrbody) VALUES (:userid, :qrname, :qrbody)', [':userid' => $_SESSION['id'], ':qrname' => $qrName, ':qrbody' => $qrbody]);
+    $insert = $database->insert('INSERT INTO qrcode (userid, qrname, qrbody) VALUES (:userid, :qrname, :qrbody)', [':userid' => $_SESSION['id'], ':qrname' => $qrName, ':qrbody' => $qrbody]);
     
     $qrid = $database->lastInsertId();
 

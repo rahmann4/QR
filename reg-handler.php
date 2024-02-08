@@ -11,7 +11,7 @@ try {
         $username = $_POST['username'];
         $hashedPassword = password_hash($_POST['password'], PASSWORD_DEFAULT);
 
-        $result = $database->insert('INSERT INTO qr.users (username, password) VALUES (:username, :password)',
+        $result = $database->insert('INSERT INTO users (username, password) VALUES (:username, :password)',
         [':username' => $username, ':password' => $hashedPassword]);
 
         if ($result) {

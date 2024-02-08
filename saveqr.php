@@ -33,34 +33,3 @@ if (isset($_POST['formatSVG'])) {
     header("Location: qr-page.php?userid=" . $_SESSION['id'] . "?qrid=" . $idqrcode);
     exit();
 }
-
-/* if (isset($_POST['format'])) {
-    $fileFormat = $_POST['format'];
-    $idqrcode = $_POST['idqrcode'];
-    $userid = $_POST['userid'];
-    $qrbody = $_POST['qrbody'];
-
-    $filename = $path . $idqrcode . '.' . strtolower($fileFormat);
-
-    if ($fileFormat === 'PNG') {
-        $qrCode = new QrCode($qrbody);
-        $writer = new PngWriter();
-        $qrPngString = $writer->write($qrCode)->getString();
-        file_put_contents($filename, $qrPngString);
-
-    } elseif ($fileFormat === 'JPG') {
-       $qrCode = new QrCode($qrbody);
-       $writer = new JpgWriter();
-       $qrJpgString = $writer->write($qrCode)->getString();
-       file_put_contents($filename, $qrJpgString);
-
-   }elseif ($fileFormat === 'SVG') {
-        $qrCode = new QrCode($qrbody);
-        $writer = new SvgWriter();
-        $qrSvgString = $writer->write($qrCode)->getString();
-        file_put_contents($filename, $qrSvgString);
-    }
-
-    header("Location: qr-page.php?userid=" . $_SESSION['id'] . "?qrid=" . $lastInsertId);
-    exit();
-} */

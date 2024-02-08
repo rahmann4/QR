@@ -10,7 +10,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $username = $_POST['username'];
     $password = $_POST['password'];
 
-    $result = $database->query("SELECT * FROM qr.users WHERE username = :username", [':username' => $username]);
+    $result = $database->query("SELECT * FROM users WHERE username = :username", [':username' => $username]);
 
     if ($result) {
         $hashedPassword = $result['password'];
@@ -18,7 +18,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         if (password_verify($password, $hashedPassword)) {
             $_SESSION['username'] = $result["username"];
             $_SESSION['id'] = $result["idusers"];
-            $qrcheck = $database->query("SELECT * FROM qr.qrcode WHERE userid = ?", [$userid]);
+            $qrcheck = $database->query("SELECT * FROM qrcode WHERE userid = ?", [$userid]);
 
             header("Location: qr-page.php?userid=" . $_SESSION['id']);
             exit;

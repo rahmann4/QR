@@ -9,13 +9,13 @@ $database = new Database($config);
 
 $qrid = $_GET['qrid'];
 
-$qrCodes = $database->query('SELECT * FROM qr.qrcode WHERE idqrcode = :idqrcode', ['idqrcode' => $qrid]);
+$qrCodes = $database->query('SELECT * FROM qrcode WHERE idqrcode = :idqrcode', ['idqrcode' => $qrid]);
 $qrbody = $qrCodes['qrbody'];
 header('Location: ' . "https://" . $qrbody);
 
 
 $insert = $database->insert(
-    'INSERT INTO qr.scan (idqrcode, qrbody, scantime) VALUES (:idqrcode, :qrbody, NOW())',
+    'INSERT INTO scan (idqrcode, qrbody, scantime) VALUES (:idqrcode, :qrbody, NOW())',
     ['idqrcode' => $qrid, 'qrbody' => $qrbody]
 );
 
