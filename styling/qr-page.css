@@ -1,7 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap');
 @import url('https://fonts.googleapis.com/css?family=Montserrat');
 
-/* General styles */
 body {
     min-height: 100vh;
     display: flex;
@@ -17,7 +16,6 @@ body {
 }
 
 .qr-container {
-    /* display: flex; */
     gap: 20px;
     padding-top: 20px;
     align-content: center;
@@ -29,7 +27,7 @@ body {
 .qr-item {
     background-color: #AAD7D9;
     padding: 10px;
-    border: 3px solid #E5E1DA;
+    border: 1px solid #E5E1DA;
     text-align: center;
 }
 
@@ -42,6 +40,7 @@ h1 {
     color: whitesmoke !important;
     font-family: 'Montserrat';
     margin-bottom: 20px !important;
+    background-color: #2179b41a;
 }
 
 .button {
@@ -63,7 +62,7 @@ h1 {
     margin-top: 10px;
     color: #fff;
     text-decoration: none;
-    border-radius: 5px;
+    border-radius: 1px;
     border: 1px solid transparent;
     transition: background-color 0.3s ease;
     width: 50%;

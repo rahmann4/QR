@@ -9,12 +9,13 @@ $database = new Database($config);
 try {
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $username = $_POST['username'];
-        $password = $_POST['password'];
+        $hashedPassword = password_hash($_POST['password'], PASSWORD_DEFAULT);
 
-        $result = $database->insert("INSERT INTO qr.users (`username`, `password`) VALUES (:username, :password)", [':username' => $username, ':password' => $password]);
+        $result = $database->insert('INSERT INTO qr.users (username, password) VALUES (:username, :password)',
+        [':username' => $username, ':password' => $hashedPassword]);
 
         if ($result) {
-            $_SESSION['message'] = 'Registration successful. You can now log in.';
+            $_SESSION['message'] = 'Registration successful.';
         } else {
             $_SESSION['message'] = 'Registration failed. Please try again.';
         }
@@ -22,9 +23,10 @@ try {
         header('Location: index.php?message=' . $_SESSION['message']);
         exit;
     }
+
 } catch (PDOException $e) {
     if ($e->getCode() == '23000') {
-        $_SESSION['message'] = 'Username exists. Please choose a different username.';
+        $_SESSION['message'] = 'Email exists. Please choose a different Email.';
     } else {
         $_SESSION['message'] = 'An error occurred. Please try again later.';
     }

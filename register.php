@@ -28,7 +28,7 @@ endif;
                 <h2>Register</h2>
                 <form action="reg-handler.php" method="POST" class="form">
                     <div class="inputBox">
-                        <input name="username" id="username" type="text" required> <i>Username</i>
+                        <input name="username" id="username" type="email" required> <i>Email</i>
                     </div>
 
                     <div class="inputBox">

@@ -17,25 +17,31 @@ endif;
 
 <body>
     <form method="POST" action="qr-generator.php">
-        <label for="qrName">Enter name:</label>
+        <label for="qrName">QR name</label>
 
         <div>
             <input id="qrName" name="qrName" required>
         </div>
 
-        <label for="qrbody">Enter text:</label>
+        <label for="qrbody">QR link</label>
+
         <div>
             <textarea id="qrbody" name="qrbody" required></textarea>
         </div>
 
-        <button type="submit">Generate</button>
-        <input type="hidden" name="idqrcode" value="123">
+        <div>
+            <button type="submit">Generate</button>
+        </div>
 
         <div>
-            <a href="logout.php" class="a button">Logout</a>
+            <a href="qr-page.php" class="cancel">Cancel</a>
+
         </div>
     </form>
 
+    <div>
+        <a href="logout.php" class="a button">Logout</a>
+    </div>
 
 </body>
 

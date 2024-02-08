@@ -30,7 +30,7 @@ endif;
                 <h2>Sign In</h2>
                 <form action="login-handler.php" method="POST" class="form">
                     <div class="inputBox">
-                        <input name="username" id="username" type="text" required> <i>Username</i>
+                        <input name="username" id="username" type="email" required> <i>Email</i>
                     </div>
 
                     <div class="inputBox">
@@ -41,22 +41,23 @@ endif;
                         <input type="submit" value="Login">
                     </div>
 
-                    <?php if (isset($error)): ?>
-                        <div class="error-message">
-                            <?= $error; ?>
-                        </div>
-                    <?php endif; ?>
-                    <?php if (isset($message)): ?>
-                        <div class="success-message">
-                            <?= $message; ?>
-                        </div>
-                    <?php endif; ?>
+
 
                 </form>
 
                 <div>
                     <a class="button" href="register.php">Register</a>
                 </div>
+                <?php if (isset($error)): ?>
+                    <div class="error-message">
+                        <?= $error; ?>
+                    </div>
+                <?php endif; ?>
+                <?php if (isset($message)): ?>
+                    <div class="success-message">
+                        <?= $message; ?>
+                    </div>
+                <?php endif; ?>
             </div>
         </div>
     </section>

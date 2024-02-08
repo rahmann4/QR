@@ -46,11 +46,12 @@ $qrCodes = $database->queryAll('SELECT * FROM qr.qrcode WHERE userid = :userid A
 
                                 <form action="qrdelete.php" method="POST">
                                     <input type="hidden" value="<?= $qrCode['idqrcode'] ?>" name="deleteid">
-                                    <button name="delete" type="submit" class="delete">Delete</button>
+                                    <button data-bs-toggle="modal" data-bs-target="#delete<?= $qrCode['idqrcode'] ?>"
+                                        name="delete" type="button" class="delete">Delete</button>
                                 </form>
 
                                 <div class="dropdown mt-2">
-                                    <button class="btn btn-success dropdown-toggle w-50" type="button"
+                                    <button class="btn btn-success dropdown-toggle w-50 rounded-0" type="button"
                                         data-bs-toggle="dropdown" aria-expanded="false">
                                         Save as
                                     </button>
@@ -87,22 +88,22 @@ $qrCodes = $database->queryAll('SELECT * FROM qr.qrcode WHERE userid = :userid A
                             <div class="modal-dialog modal-dialog-centered">
                                 <div class="modal-content">
                                     <div class="modal-header">
-                                        <h5 class="modal-title">Change QR value:</h5>
+                                        <h5 class="modal-title">Change QR:</h5>
                                         <button type="button" class="btn-close" data-bs-dismiss="modal"
                                             aria-label="Close"></button>
                                     </div>
                                     <div class="modal-body">
-                                        <form class="" method="POST" action="qrupdate.php">
-                                            <label class="mb-2 w-100" name="qrname">Change QR Name:</label>
+                                        <form method="POST" action="qrupdate.php">
+                                            <label class="mb-2 w-100" name="qrname">QR Name:</label>
                                             <input class="mb-2 w-100" value="<?= $qrCode['qrname'] ?>" name="qrname">
-                                            <label class="mb-2 w-100" name="qrbody">Change QR Content:</label>
+                                            <label class="mb-2 w-100" name="qrbody">QR Link:</label>
                                             <input class="mb-2 w-100" value="<?= $qrCode['qrbody'] ?>" name="qrbody">
                                             <input type="hidden" value="<?= $qrCode['idqrcode'] ?>" name="idqrcode">
                                             <div class="modal-footer">
+                                                <button type="submit" class="btn btn-primary w-100">Save
+                                                </button>
                                                 <button type="button" class="btn btn-secondary w-100"
                                                     data-bs-dismiss="modal">Close</button>
-                                                <button type="submit" class="btn btn-primary w-100">Save
-                                                    changes</button>
                                             </div>
                                         </form>
                                     </div>
@@ -110,7 +111,27 @@ $qrCodes = $database->queryAll('SELECT * FROM qr.qrcode WHERE userid = :userid A
                             </div>
                         </div>
                     </div>
+                    <div class="modal fade" id="delete<?= $qrCode['idqrcode'] ?>" tabindex="-1" role="dialog"
+                        aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLongTitle">Delete</h5>
+                                </div>
+                                <div class="modal-body">
+                                    <p>Are you sure you want to delete this QR?</p>
+                                </div>
+                                <div class="modal-footer">
+                                    <form method="POST" action="qrdelete.php">
+                                        <button type="submit" class="btn btn-primary">Confirm</button>
+                                        <input type="hidden" value="<?= $qrCode['idqrcode'] ?>" name="deleteid">
+                                    </form>
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                                </div>
 
+                            </div>
+                        </div>
+                    </div>
                 <?php endforeach; ?>
             </div>
 
