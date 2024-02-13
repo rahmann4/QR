@@ -25,8 +25,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     $qrid = $database->lastInsertId();
 
-    $redirectUrl = "scan.php?qrid=$qrid";
-
+    $redirectUrl = "https://qr.executechnology.net/scan.php?qrid=$qrid";
+    
     $qrCode = new QrCode($redirectUrl);
 
     $writer = new SvgWriter();

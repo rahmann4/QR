@@ -272,6 +272,8 @@ table.dataTable.no-footer {
 
 .delete-column {
   display: flex;
-  justify-content: center;
-  gap: 10px;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: space-around;
+  align-items: center;
 }

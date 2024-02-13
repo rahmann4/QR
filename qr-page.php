@@ -40,7 +40,7 @@ $qrCodes = $database->queryAll('SELECT * FROM qr.qrcode WHERE userid = :userid A
                                 $filename = "qrcodes/{$idqrcode}.svg";
                                 $svgContent = file_get_contents($filename);
                                 ?>
-                                <svg id="svgContent" width="320px" height="320px">
+                                <svg id="svgContent-<?= $qrCode['idqrcode'] ?>" width="320px" height="320px">
                                     <?= $svgContent ?>
                                 </svg>
                             </div>
@@ -57,27 +57,25 @@ $qrCodes = $database->queryAll('SELECT * FROM qr.qrcode WHERE userid = :userid A
 
                                 <div class="dropdown mt-2">
                                     <button class="btn btn-success dropdown-toggle w-50" type="button"
-                                        data-bs-toggle="dropdown" aria-expanded="false" >
+                                        data-bs-toggle="dropdown" aria-expanded="false">
                                         Save as
                                     </button>
                                     <ul class="dropdown-menu" data-bs-theme="dark">
                                         <li>
                                             <form method="post">
                                                 <input type="hidden" value="<?= $qrCode['idqrcode'] ?>" name="idqrcode">
-                                                <input type="hidden" value="<?= $_SESSION['id'] ?>" name="userid">
-                                                <input type="hidden" value="<?= $qrCode['qrbody'] ?>" name="qrbody">
-                                                <button onclick="saveAsPNG()" class="dropdown-item" name="formatPNG"
-                                                    type="submit" value="png">PNG</button>
+                                                <button onclick="saveAsPNG(<?= $qrCode['idqrcode'] ?>)"
+                                                    class="dropdown-item" name="formatPNG" type="button">PNG</button>
+
                                             </form>
 
                                         </li>
                                         <li>
                                             <form method="post">
                                                 <input type="hidden" value="<?= $qrCode['idqrcode'] ?>" name="idqrcode">
-                                                <input type="hidden" value="<?= $_SESSION['id'] ?>" name="userid">
-                                                <input type="hidden" value="<?= $qrCode['qrbody'] ?>" name="qrbody">
-                                                <button onclick="saveAsSVG()" class="dropdown-item" name="formatSVG"
-                                                    type="submit" value="svg">SVG</button>
+                                                <button onclick="saveAsSVG(<?= $qrCode['idqrcode'] ?>)"
+                                                    class="dropdown-item" name="formatSVG" type="button">SVG</button>
+
                                             </form>
 
                                         </li>
@@ -90,7 +88,7 @@ $qrCodes = $database->queryAll('SELECT * FROM qr.qrcode WHERE userid = :userid A
 
                         <div class="modal fade" id="modal<?= $qrCode['idqrcode'] ?>" tabindex="-1"
                             aria-labelledby="exampleModalLabel" aria-hidden="true" data-bs-theme="dark">
-                            <div class="modal-dialog modal-dialog-centered" >
+                            <div class="modal-dialog modal-dialog-centered">
                                 <div class="modal-content text-white">
                                     <div class="modal-header">
                                         <h5 class="modal-title">Change QR</h5>
@@ -119,7 +117,7 @@ $qrCodes = $database->queryAll('SELECT * FROM qr.qrcode WHERE userid = :userid A
                     <div class="modal fade" id="delete<?= $qrCode['idqrcode'] ?>" tabindex="-1" role="dialog"
                         aria-labelledby="exampleModalCenterTitle" aria-hidden="true" data-bs-theme="dark">
                         <div class="modal-dialog modal-dialog-centered" role="document">
-                            <div class="modal-content text-white" >
+                            <div class="modal-content text-white">
                                 <div class="modal-header">
                                     <h5 class="modal-title" id="exampleModalLongTitle">Delete QR</h5>
                                 </div>

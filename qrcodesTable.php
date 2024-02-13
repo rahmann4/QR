@@ -110,10 +110,12 @@ foreach ($qrcodes as $qrcode) {
                         <th>Content</th>
                         <th>Scan Count</th>
                         <th style="text-align: center">Action</th>
+                        <th style="text-align: center" class="d-none">QR</th>
                     </tr>
                 </thead>
                 <tbody>
                     <?php foreach ($qrcodes as $qrcode): ?>
+
                         <tr>
                             <td>
                                 <?php echo $qrcode['idqrcode']; ?>
@@ -139,6 +141,43 @@ foreach ($qrcodes as $qrcode) {
                                 <button data-bs-toggle="modal" data-bs-target="#changemodal-<?= $qrcode['idqrcode'] ?>"
                                     type="button" class="btn btn-primary"><i class="fa-solid fa-pen-to-square"
                                         style="color: #ffffff;"></i></button>
+                                <div class="dropdown">
+                                    <button class="btn btn-success dropdown-toggle" type="button" data-bs-toggle="dropdown"
+                                        aria-expanded="false">
+                                        <i class="fa-solid fa-download" style="color: #ffffff;"></i>
+                                    </button>
+                                    <ul class="dropdown-menu" data-bs-theme="dark">
+                                        <li>
+                                            <form method="post">
+                                                <input type="hidden" value="<?= $qrcode['idqrcode'] ?>" name="idqrcode">
+                                                <button onclick="saveAsPNG(<?= $qrcode['idqrcode'] ?>)"
+                                                    class="dropdown-item" name="formatPNG" type="button">PNG</button>
+
+                                            </form>
+
+                                        </li>
+                                        <li>
+                                            <form method="post">
+                                                <input type="hidden" value="<?= $qrcode['idqrcode'] ?>" name="idqrcode">
+                                                <button onclick="saveAsSVG(<?= $qrcode['idqrcode'] ?>)"
+                                                    class="dropdown-item" name="formatSVG" type="button">SVG</button>
+
+                                            </form>
+
+                                        </li>
+
+                                    </ul>
+                                </div>
+                            </td>
+                            <td class="d-none">
+                                <?php
+                                $idqrcode = $qrcode['idqrcode'];
+                                $filename = "qrcodes/{$idqrcode}.svg";
+                                $svgContent = file_get_contents($filename);
+                                ?>
+                                <svg id="svgContent-<?= $qrcode['idqrcode'] ?>" width="320px" height="320px">
+                                    <?= $svgContent ?>
+                                </svg>
                             </td>
                         </tr>
 
@@ -245,6 +284,9 @@ foreach ($qrcodes as $qrcode) {
         });
 
     </script>
+
+    <script src="saveqrfunction.js"></script>
+
 
 </body>
 

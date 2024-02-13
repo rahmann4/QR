@@ -1,5 +1,5 @@
-function saveAsPNG() {
-  var svgContent = document.getElementById("svgContent");
+function saveAsPNG(qrCodeId) {
+  var svgContent = document.getElementById("svgContent-" + qrCodeId);
   var canvas = document.createElement("canvas");
   var ctx = canvas.getContext("2d");
   var bbox = svgContent.getBBox();
@@ -12,23 +12,23 @@ function saveAsPNG() {
   var url = DOMURL.createObjectURL(svgBlob);
 
   img.onload = function () {
-    ctx.drawImage(img, 0, 0);
-    DOMURL.revokeObjectURL(url);
+      ctx.drawImage(img, 0, 0);
+      DOMURL.revokeObjectURL(url);
 
-    var imgURI = canvas.toDataURL("image/png");
-    var fileName = "qr_code.png";
+      var imgURI = canvas.toDataURL("image/png");
+      var fileName = "qr_code.png";
 
-    var link = document.createElement("a");
-    link.download = fileName;
-    link.href = imgURI;
-    link.click();
+      var link = document.createElement("a");
+      link.download = fileName;
+      link.href = imgURI;
+      link.click();
   };
 
   img.src = url;
 }
 
-function saveAsSVG() {
-  var svgContent = document.getElementById("svgContent");
+function saveAsSVG(qrCodeId) {
+  var svgContent = document.getElementById("svgContent-" + qrCodeId);
   var canvas = document.createElement("canvas");
   var ctx = canvas.getContext("2d");
   var bbox = svgContent.getBBox();
