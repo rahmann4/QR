@@ -1,0 +1,112 @@
+@import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap");
+
+body {
+  font-family: "Quicksand", sans-serif;
+  background-color: #92C7CF;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+form {
+  width: 500px;
+  background-color: #E5E1DA;
+  padding: 20px;
+  border: 1px solid black;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+label {
+  color: black;
+  display: block;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  font-weight: bold;
+  font-size: 1.5rem;
+}
+
+textarea {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 20px;
+  box-sizing: border-box;
+  border: 1px solid black;
+  border-radius: 1px;
+  font-size: 16px;
+  resize: none;
+}
+
+button {
+  background-color: #40A2E3;
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 1px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  font-weight: 700;
+
+}
+
+button:hover {
+  background-color: #3487bf;
+  color: #f4f4f4;
+}
+
+input {
+  width: 100%;
+  font-size: medium;
+  border: 1px solid black;
+  border-radius: 1px;}
+
+.a.button {
+  text-align: center;
+  width: 200px;
+  display: inline-block;
+  padding: 12px 24px;
+  margin-top: 10px;
+  text-decoration: none;
+  border-radius: 1px;
+  border: 1px solid transparent;
+  transition: background-color 0.3s ease;
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 999;
+  background-color: #d58a11;
+  font-family: "Quicksand";
+  font-weight: 700;
+  color: #eeeeee;
+}
+
+.a.button:hover {
+  background-color: #9e6810;
+}
+
+.cancel {
+  display: inline-block;
+  padding: 12px 30px;
+  margin-top: 10px;
+  text-decoration: none;
+  border-radius: 1px;
+  background-color: #D4A190;
+  color: white;
+  border: none;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.cancel:hover {
+  background-color: #B07D6F;
+  color: #f4f4f4;
+}
+
+.svg xmlns {
+  width: 100%;
+}

@@ -1,0 +1,174 @@
+@font-face {
+    font-family: "Leow";
+    src: url("../fonts/loew-next-arabic-medium.ttf") format("truetype");
+    
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    place-content: center;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+    justify-items: center;
+    font-family: 'Leow' !important;
+    margin: 0;
+    background-image: url('../logo/background.png'); 
+    background-size: cover; 
+    background-position: center; 
+    background-repeat: no-repeat;
+    width: 100%;
+}
+
+.qr-container {
+    gap: 20px;
+    padding-top: 20px;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+    justify-items: center;
+}
+
+.qr-item {
+    background-color: #1c1e1b;
+    padding: 10px;
+    border: 1px solid #00a651;
+    text-align: center;
+}
+
+.qr-code-container {
+    margin-bottom: 10px;
+}
+
+h1 {
+    text-shadow: 1px 1px 1px #000000; 
+    color: whitesmoke !important;
+    font-family: 'Leow';
+    margin-bottom: 20px !important;
+    border-radius: 5px;
+    font-weight: 600;
+}
+
+.button {
+    margin-top: 10px;
+    font-family: 'Leow';
+}
+
+.dropdown-menu {
+    min-width: 150px;
+    margin-top: 10px;
+}
+
+.create,
+.button,
+.delete,
+.a.button {
+    display: inline-block;
+    padding: 12px 24px;
+    margin-top: 10px;
+    color: #efefef;
+    text-decoration: none;
+    border-radius: 5px;
+    border: 1px solid transparent;
+    transition: background-color 0.3s ease;
+    width: 50%;
+}
+
+.create,
+.a.button {
+    background-color: #00a651;
+    position: fixed;
+    bottom: 90px; 
+    right: 20px; 
+    z-index: 999; 
+    width: 200px;
+    text-align: center;
+    font-family: 'Leow';
+    font-weight: 700;
+
+
+}
+
+.create:hover {
+    background-color: #008e45;
+}
+
+.button,
+.a.button {
+    background-color: #ffffff;
+    color:#00a651;
+    font-weight: 700;
+}
+
+.button:hover,
+.a.button:hover {
+    background-color: #efefef;
+}
+
+.delete {
+    background-color: #000000; 
+    color:#EEEEEE;
+    font-weight: 700;
+    font-family: 'Leow';
+}
+
+.a.button {
+    position: fixed;
+    bottom: 20px; 
+    right: 20px; 
+    z-index: 999; 
+    background-color: #ffffff; 
+    font-family: 'Leow';
+    font-weight: 700;
+        color:#00a651;
+
+
+
+}
+
+.delete:hover {
+    background-color: #171717;
+    
+
+}
+.a.button:hover {
+    background-color: #efefef;
+}
+
+
+.modal-content {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    pointer-events: auto;
+    background-color: #171717;
+    background-clip: padding-box;
+    border: var(--bs-modal-border-width) solid var(--bs-modal-border-color);
+    border-radius: var(--bs-modal-border-radius);
+    outline: 0;
+}
+
+.error-message {
+    position: absolute;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #ffcccc;
+    padding: 10px;
+    border: 1px solid #ff0000;
+    border-radius: 5px;
+}
+
+.success-message {
+    position: absolute;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #00a651;
+    padding: 10px;
+    border: 1px solid #00783a;
+    border-radius: 5px;
+    color: #ffffff;
+}
