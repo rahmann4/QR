@@ -276,11 +276,11 @@ foreach ($qrcodes as $qrcode) {
     </div>
 
     <script>
-        new DataTable('#usersTable', {
-            stateSave: true
-        });
         new DataTable('#qrcodesTable', {
-            stateSave: true
+            stateSave: true,
+            "language": {
+                "search": "<i class='fa-solid fa-magnifying-glass' style='color: #ffffff;'></i>"
+            }
         });
 
     </script>

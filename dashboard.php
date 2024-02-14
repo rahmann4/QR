@@ -23,7 +23,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $username = $_POST['username'];
     $database = new Database($config);
     $delete = $database->delete(
-        'DELETE FROM qr.users WHERE username = :username',
+        'UPDATE qr.users SET deletetime = NOW() WHERE username = :username',
         ['username' => $username]
     );
 
@@ -37,7 +37,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     exit;
 }
 
-$users = $database->queryAll('SELECT * FROM qr.users WHERE username != ?', ['admin@gmail.com']);
+$users = $database->queryAll('SELECT * FROM qr.users WHERE username != ? AND deletetime IS NULL', ['admin@gmail.com']);
 $qrcodes = $database->queryAll('SELECT * FROM qr.qrcode WHERE deletetime IS NULL', []);
 
 $scanCounts = [];
@@ -192,12 +192,11 @@ foreach ($qrcodes as $qrcode) {
 
     <script>
         new DataTable('#usersTable', {
-            stateSave: true
+            stateSave: true,
+            "language": {
+                "search": "<i class='fa-solid fa-magnifying-glass' style='color: #ffffff;'></i>"
+            }
         });
-        new DataTable('#qrcodesTable', {
-            stateSave: true
-        });
-
     </script>
 
 
