@@ -20,7 +20,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $_SESSION['id'] = $result["idusers"];
             $userid = $result["idusers"];
 
-            if ($username === "admin@gmail.com") {
+            if ($username === "admin@executech.sa") {
                 header("Location: dashboard.php");
                 exit;
             } else {

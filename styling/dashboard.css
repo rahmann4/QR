@@ -230,44 +230,44 @@ table.dataTable.no-footer {
 }
 
 .navbar {
-    background-color: #00a651;
-    padding: 10px 20px;
-    color: #fff;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+  background-color: #00a651;
+  padding: 10px 20px;
+  color: #fff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .navbar-links {
-    display: flex;
-    flex-grow: 1;
-    justify-content: center;
-    gap: 20px;
+  display: flex;
+  flex-grow: 1;
+  justify-content: center;
+  gap: 20px;
 }
 
 .navbar-links a {
-    color: #fff;
-    text-decoration: none;
-    font-size: 18px;
-    padding: 10px 20px;
-    border-radius: 5px;
-    transition: background-color 0.3s ease;
+  color: #fff;
+  text-decoration: none;
+  font-size: 18px;
+  padding: 10px 20px;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
 }
 
 .navbar-links a:hover {
-    background-color: rgba(255, 255, 255, 0.1);
-    color: #fff;
+  background-color: rgba(255, 255, 255, 0.1);
+  color: #fff;
 }
 
 .navbar-links a.active {
-    background-color: #fff;
-    color: #00a651;
-    border-radius: 5px;
+  background-color: #fff;
+  color: #00a651;
+  border-radius: 5px;
 }
 
 .delete-form {
-    margin-right: 12px;
-    justify-items: center;
+  margin-right: 12px;
+  justify-items: center;
 }
 
 .delete-column {
@@ -276,4 +276,28 @@ table.dataTable.no-footer {
   flex-wrap: nowrap;
   justify-content: space-around;
   align-items: center;
+}
+
+.createQR {
+  background-color: #a6009e;
+  position: fixed;
+  bottom: 160px;
+  right: 20px;
+  z-index: 999;
+  width: 200px;
+  text-align: center;
+  font-family: "Leow";
+  display: inline-block;
+  padding: 12px 24px;
+  margin-top: 10px;
+  color: #efefef;
+  text-decoration: none;
+  border-radius: 5px;
+  border: 1px solid transparent;
+  transition: background-color 0.3s ease;
+  font-weight: 700;
+}
+
+.createQR:hover {
+  background-color: #8d0086;
 }

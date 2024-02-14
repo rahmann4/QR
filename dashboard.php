@@ -14,7 +14,7 @@ require 'Database.php';
 
 $database = new Database($config);
 
-if (!isset($_SESSION['username']) || $_SESSION['username'] !== 'admin@gmail.com') {
+if (!isset($_SESSION['username']) || $_SESSION['username'] !== 'admin@executech.sa') {
     header("Location: index.php");
     exit;
 }
@@ -37,7 +37,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     exit;
 }
 
-$users = $database->queryAll('SELECT * FROM qr.users WHERE username != ? AND deletetime IS NULL', ['admin@gmail.com']);
+$users = $database->queryAll('SELECT * FROM qr.users WHERE username != ? AND deletetime IS NULL', ['admin@executech.sa']);
 $qrcodes = $database->queryAll('SELECT * FROM qr.qrcode WHERE deletetime IS NULL', []);
 
 $scanCounts = [];
@@ -180,6 +180,36 @@ foreach ($qrcodes as $qrcode) {
                 </div>
             </div>
         </div>
+    </div>
+
+    <div class="modal fade" id="createQRmodal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true"
+        data-bs-theme="dark">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content text-white">
+                <div class="modal-header">
+                    <h5 class="modal-title">Create QR</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form method="POST" action="qr-generator.php">
+                        <label class="mb-2 w-100" name="qrName">QR Name:</label>
+                        <input class="mb-2 w-100" name="qrName" required>
+                        <label class="mb-2 w-100" name="qrbody">QR Link:</label>
+                        <input class="mb-2 w-100" name="qrbody" required>
+                        <input name="role" type="hidden" value="admin">
+                        <div class="modal-footer">
+                            <button type="submit" class="btn btn-primary w-100">Create
+                            </button>
+                            <button type="button" class="btn btn-secondary w-100" data-bs-dismiss="modal">Close</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div>
+        <button data-bs-toggle="modal" data-bs-target="#createQRmodal" type="button" class="createQR">Create QR</button>
     </div>
 
     <div>
