@@ -39,7 +39,7 @@ function saveAsSVG(qrCodeId) {
   var url = window.URL.createObjectURL(blob);
 
   var link = document.createElement("a");
-  link.download = "qr_code.svg";
+  link.download = qrCodeId + ".svg";
   link.href = url;
   link.click();
 
