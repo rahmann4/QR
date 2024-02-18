@@ -279,7 +279,7 @@ table.dataTable.no-footer {
 }
 
 .createQR {
-  background-color: #a6009e;
+  background-color: #84a1d2;
   position: fixed;
   bottom: 160px;
   right: 20px;
@@ -299,5 +299,5 @@ table.dataTable.no-footer {
 }
 
 .createQR:hover {
-  background-color: #8d0086;
+  background-color: #6e85ac;
 }
