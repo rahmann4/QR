@@ -34,7 +34,7 @@ $qrCodes = $database->queryAll('SELECT * FROM qr.qrcode WHERE userid = :userid A
                         <div class="col-lg-4 col-md-12 mb-3">
                             <div class="qr-item">
                                 <div class="qr-header">
-                                    <h1>
+                                    <h1 class="qr-name">
                                         <?= $qrCode['qrname'] ?>
                                     </h1>
                                 </div>

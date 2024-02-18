@@ -10,7 +10,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $username = $_POST['username'];
     $password = $_POST['password'];
 
-    $result = $database->query("SELECT * FROM qr.users WHERE username = :username", [':username' => $username]);
+    $result = $database->query("SELECT * FROM qr.users WHERE username = :username AND deletetime IS NULL", [':username' => $username]);
 
     if ($result) {
         $hashedPassword = $result['password'];

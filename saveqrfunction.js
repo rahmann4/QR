@@ -1,30 +1,30 @@
 function saveAsPNG(qrCodeId) {
-  var svgContent = document.getElementById("svgContent-" + qrCodeId);
-  var canvas = document.createElement("canvas");
-  var ctx = canvas.getContext("2d");
-  var bbox = svgContent.getBBox();
-  canvas.width = bbox.width;
-  canvas.height = bbox.height;
-  var data = new XMLSerializer().serializeToString(svgContent);
-  var DOMURL = window.URL || window.webkitURL || window;
-  var img = new Image();
-  var svgBlob = new Blob([data], { type: "image/svg+xml;charset=utf-8" });
-  var url = DOMURL.createObjectURL(svgBlob);
-
-  img.onload = function () {
-      ctx.drawImage(img, 0, 0);
-      DOMURL.revokeObjectURL(url);
-
-      var imgURI = canvas.toDataURL("image/png");
-      var fileName = "qr_code.png";
-
-      var link = document.createElement("a");
-      link.download = fileName;
-      link.href = imgURI;
-      link.click();
+  var xhr = new XMLHttpRequest();
+  xhr.open('GET', 'qrcodes/' + qrCodeId + '.svg', true);
+  xhr.responseType = 'blob';
+  xhr.onload = function() {
+    if (xhr.status === 200) {
+      var blob = xhr.response;
+      var url = URL.createObjectURL(blob);
+      var img = new Image();
+      img.onload = function() {
+        var canvas = document.createElement('canvas');
+        canvas.width = img.width;
+        canvas.height = img.height;
+        var ctx = canvas.getContext('2d');
+        ctx.drawImage(img, 0, 0, img.width, img.height);
+        canvas.toBlob(function(blob) {
+          var link = document.createElement('a');
+          link.download = qrCodeId + '.png';
+          link.href = URL.createObjectURL(blob);
+          link.click();
+          URL.revokeObjectURL(url);
+        }, 'image/png');
+      };
+      img.src = url;
+    }
   };
-
-  img.src = url;
+  xhr.send();
 }
 
 function saveAsSVG(qrCodeId) {

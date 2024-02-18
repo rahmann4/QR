@@ -177,3 +177,6 @@ h1 {
     color: #ff0000;
 }
 
+.qr-name {
+           word-wrap: break-word; 
+}
